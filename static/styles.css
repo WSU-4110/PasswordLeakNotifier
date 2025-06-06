@@ -24,5 +24,23 @@
 }
 
 #results {
-    margin-top: 400px;
+    margin-top: 200px;
+    color: #6e3400;
+    font-size: 40px;
+}
+
+
+#reminders {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 500px;
+    color: #6e3400;
+    font-size: 25px;
+}
+
+#reminder-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
