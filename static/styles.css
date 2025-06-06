@@ -1,3 +1,6 @@
+
+/* Email input div */
+
 .submit-btn {
     background-color: #c1a48a;
     color: white;
@@ -23,24 +26,26 @@
     background-color: #f5f3f3;
 }
 
+/* Results div */
+
 #results {
     margin-top: 200px;
     color: #6e3400;
     font-size: 40px;
 }
 
+/* Reminders div */
 
 #reminders {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     margin-top: 500px;
     color: #6e3400;
     font-size: 25px;
+    margin-bottom: 40px;
 }
 
-#reminder-options {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+#reminderSubmit {
+    border: none;
+    border-radius: 20%;
+    padding-left: 15px;
+    padding-right: 15px;
 }
