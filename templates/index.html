@@ -36,8 +36,10 @@
     </div>
 
     <div id="popup" class="d-none">
-        <p>You have successfully signed up for monthly reminders to abc123@gmail.com</p>
-        <button id="closePopup">OK</button>
+        <div id="popupContent">
+            <p>You have successfully signed up for monthly reminders to abc123@gmail.com.</p>
+            <button id="closePopup">OK</button>
+        </div>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>
