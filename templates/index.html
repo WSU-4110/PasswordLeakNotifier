@@ -25,7 +25,7 @@
         </form>
     </div>
 
-    <!-- This div will remain hidden until needed. Script.js will remove the d-none class when a valid email is submitted. -->
+    <!-- d-none divs will remain hidden until needed. Script.js will remove the d-none class when a valid email is submitted. -->
     <div id="results" class="d-none text-center fw-bold">
         # breach(es) found for abc123@gmail.com
     </div>
@@ -33,6 +33,11 @@
     <div id="reminders" class="d-none text-center">
         Would you like to receive monthly reminders to check for any data breaches?
         <button id="reminderSubmit">Yes</button>
+    </div>
+
+    <div id="popup" class="d-none">
+        <p>You have successfully signed up for monthly reminders to abc123@gmail.com</p>
+        <button id="closePopup">OK</button>
     </div>
 
     <script src="{{ url_for('static', filename='script.js') }}"></script>

@@ -12,10 +12,18 @@ document.getElementById("emailForm").addEventListener("submit", function (event)
         results.classList.remove("d-none");
         results.scrollIntoView({ behavior: 'smooth' });
         reminders.classList.remove("d-none");
-        
-
     } else {
         console.log("Invalid email.")
     }
 
+})
+
+// "Success" popup when clicking "Yes" for reminders
+
+document.getElementById("reminderSubmit").addEventListener("click", function(){
+    document.getElementById("popup").classList.remove("d-none");
+})
+
+document.getElementById("closePopup").addEventListener("click", function(){
+    document.getElementById("popup").classList.add("d-none");
 })
