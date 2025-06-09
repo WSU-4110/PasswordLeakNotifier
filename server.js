@@ -43,16 +43,22 @@ app.post('/search', (req, res) => {
   }
 });
 
-// Get search results by user
-app.get('/search/:userId', (req, res) => {
-  const { userId } = req.params;
-  const stmt = db.prepare(`
-    SELECT * FROM search_results
-    WHERE user_id = ?
-    ORDER BY searched_at DESC
-  `);
-  const results = stmt.all(userId);
-  res.json(results);
+// Get search results by user email
+app.get('/search/:userEmail', (req, res) => {
+  const { userEmail } = req.params;
+
+  try {
+    const stmt = db.prepare(`SELECT * FROM users WHERE email = ?`);
+    const user = stmt.get(userEmail);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    res.json(user);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 });
 
 app.get('/', (req, res) => {

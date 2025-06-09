@@ -23,8 +23,8 @@
             </div>
 
         </form>
+        <pre id="output">Breach Results:</pre>
     </div>
-    <pre id="output">Waiting for interaction...</pre>
 
     <script>
         const apiBase = "https://password-leak-notifier-csc4110-45d5c49e4df3.herokuapp.com";
@@ -35,7 +35,7 @@
         });
     
         function displayOutput(data) {
-          document.getElementById('output').textContent = JSON.stringify(data, null, 2);
+          document.getElementById('output').textContent = "Breach Results:\n" + JSON.stringify(data, null, 2);
         }
     
         async function createUser() {
@@ -46,7 +46,11 @@
             body: JSON.stringify({ email })
           });
           const data = await res.json();
-          displayOutput(data);
+          if ("error" in data) {
+            getResults();
+          } else {
+            displayOutput(data);
+          }
         }
     
         async function addSearch() {
@@ -64,8 +68,8 @@
         }
     
         async function getResults() {
-          const userId = document.getElementById('getUserId').value;
-          const res = await fetch(`${apiBase}/search/${userId}`);
+          const user_email = document.getElementById('emailInput').value;
+          const res = await fetch(`${apiBase}/search/${user_email}`);
           const data = await res.json();
           displayOutput(data);
         }

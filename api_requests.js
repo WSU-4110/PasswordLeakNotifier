@@ -34,8 +34,8 @@ export async function addSearchResult(user_id, query, result) {
 }
 
 // Fetch search results for a user
-export async function getSearchResults(user_id) {
-  const res = await fetch(`${API_BASE}/search/${user_id}`);
+export async function getSearchResults(user_Email) {
+  const res = await fetch(`${API_BASE}/search/${user_Email}`);
   
   if (!res.ok) {
     const err = await res.json();
