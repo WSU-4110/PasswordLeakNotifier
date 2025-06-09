@@ -9,9 +9,14 @@ document.getElementById("emailForm").addEventListener("submit", function (event)
     const reminders = document.getElementById("reminders");
 
     if (emailInput.checkValidity() && emailValue !== ""){
+        // Results div
         results.classList.remove("d-none");
         results.scrollIntoView({ behavior: 'smooth' });
+        results.innerText = `# breach(es) found for ${emailValue}`;
+
+        // Reminders div
         reminders.classList.remove("d-none");
+        document.querySelector("#popupContent p").innerText = `You have successfully signed up for monthly reminders to ${emailValue}.`;
     } else {
         console.log("Invalid email.")
     }
