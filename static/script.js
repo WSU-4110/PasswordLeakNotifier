@@ -15,7 +15,7 @@ const PasswordLeakNotifier = (function () {
         results.innerText = `# breach(es) found for ${email}`;
     }
 
-    // Shows successful reminder popup by remove d-none class from reminders div
+    // Shows successful reminder popup by removing d-none class from reminders div
     function showReminders(email) {
         const reminders = document.getElementById("reminders");
         reminders.classList.remove("d-none");
