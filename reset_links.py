@@ -38,7 +38,7 @@ RESET_LINKS = {
     "walmart.com": "https://www.walmart.com/account/forgot-password",
     "ikea.com": "https://secure.ikea.com/passwordReset",
     "t-mobile.com": "https://www.t-mobile.com/password-reset",
-    "fiverr.com": "https://www.fiverr.com/password_recovery/new"
+    "fiverr.com": "https://www.fiverr.com/password_recovery/new",
     "amazon.com": "https://www.amazon.com/ap/forgotpassword",
     "aol.com": "https://login.aol.com/forgot",
     "ask.com": "https://www.ask.com/password",
