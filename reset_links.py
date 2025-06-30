@@ -78,5 +78,6 @@ RESET_LINKS = {
     "cbs.com": "https://account.cbs.com/password/reset",
     "nbc.com": "https://www.nbc.com/forgot-password",
     "imdb.com": "https://www.imdb.com/registration/password/reset",
-    "indeed.com": "https://secure.indeed.com/account/login?from=/forgotpassword"
+    "indeed.com": "https://secure.indeed.com/account/login?from=/forgotpassword",
+    "chegg.com": "https://www.chegg.com/forgot-password"
 }
