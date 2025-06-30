@@ -2,11 +2,11 @@ from flask import Flask, request, jsonify
 import requests
 import os
 from dotenv import load_dotenv
+from reset_links import RESET_LINKS  
 
-load_dotenv()  
+load_dotenv()
 app = Flask(__name__)
 
-# HIBP API key from environment file
 HIBP_API_KEY = os.getenv("HIBP_API_KEY")
 
 @app.route('/check-email', methods=['GET'])
@@ -19,37 +19,45 @@ def check_email():
         "hibp-api-key": HIBP_API_KEY,
         "User-Agent": "Pwned-Notifier-School-Project"
     }
-    
+
     try:
-        # fetch breaches from HIBP API
-        response = requests.get(
+        resp = requests.get(
             f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}",
             headers=headers,
             params={"truncateResponse": False}
         )
-        
-        if response.status_code == 200:
-            breaches = response.json()
-            # extract data (number, dates, links)
-            result = {
-                "email": email,
-                "breach_count": len(breaches),
-                "breaches": [
-                    {
-                        "name": breach["Name"],
-                        "date": breach["BreachDate"],
-                        "link": f'https://haveibeenpwned.com/PwnedWebsites#{breach["Name"]}'
-                    }
-                    for breach in breaches
-                ]
-            }
-            return jsonify(result)
-        
-        elif response.status_code == 404:
+
+        if resp.status_code == 404:
             return jsonify({"email": email, "breach_count": 0, "breaches": []})
-        
-        else:
-            return jsonify({"error": "Failed to fetch data"}), 500
+
+        if resp.status_code != 200:
+            return jsonify({"error": "Failed to fetch breach data"}), 500
+
+        breaches = resp.json()
+        result = {
+            "email": email,
+            "breach_count": len(breaches),
+            "breaches": []
+        }
+
+        for b in breaches:
+            domain = (b.get("Domain") or "").lower()
+            reset_url = RESET_LINKS.get(domain)
+
+            entry = {
+                "name": b["Name"],
+                "date": b["BreachDate"],
+                "hibp_link": f"https://haveibeenpwned.com/PwnedWebsites#{b['Name']}"
+            }
+
+            if reset_url:
+                entry["reset_link"] = reset_url
+            else:
+                entry["error"] = f"No reset link found for {domain or b['Name']}"
+
+            result["breaches"].append(entry)
+
+        return jsonify(result)
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500

@@ -1,0 +1,22 @@
+RESET_LINKS = {
+    "yahoo.com": "https://login.yahoo.com/forgot",  # Yahoo password recovery ([login.yahoo.com](https://login.yahoo.com/forgot?utm_source=chatgpt.com))
+    "myspace.com": "https://myspace.com/forgotpassword",  # Myspace password reset ([myspace.com](https://myspace.com/forgotpassword?utm_source=chatgpt.com))
+    "linkedin.com": "https://www.linkedin.com/uas/request-password-reset",  # LinkedIn password reset ([linkedin.com](https://www.linkedin.com/uas/request-password-reset?utm_source=chatgpt.com))
+    "adobe.com": "https://helpx.adobe.com/manage-account/using/change-or-reset-password.html",  # Adobe password reset guide ([helpx.adobe.com](https://helpx.adobe.com/manage-account/using/change-or-reset-password.html?utm_source=chatgpt.com))
+    "dropbox.com": "https://www.dropbox.com/forgot",  # Dropbox password reset ([dropbox.com](https://www.dropbox.com/forgot?utm_source=chatgpt.com))
+    "tumblr.com": "https://www.tumblr.com/forgot_password",  # Tumblr password reset ([tumblr.com](https://www.tumblr.com/forgot_password?utm_source=chatgpt.com))
+    "ebay.com": "https://www.ebay.com/help/account/changing-account-settings/reset-password?id=4197",  # eBay reset password citeturn38search0
+    "canva.com": "https://www.canva.com/login/reset/",  # Canva password reset ([canva.com](https://www.canva.com/login/reset/?utm_source=chatgpt.com))
+    "facebook.com": "https://www.facebook.com/login/identify",  # Facebook account recovery ([facebook.com](https://www.facebook.com/login/identify?utm_source=chatgpt.com))
+    "myfitnesspal.com": "https://www.myfitnesspal.com/account/forgot-password",  # MyFitnessPal forgot password ([justanswer.com](https://www.justanswer.com/software/pfjqa-password-recovery-myfitnesspal-account-haven-t-used.html?utm_source=chatgpt.com))
+    "equifax.com": "https://lockandalert.equifax.com/member-center/forgotpassword/",  # Equifax Lock & Alert forgot password ([lockandalert.equifax.com](https://lockandalert.equifax.com/member-center/forgotpassword/?utm_source=chatgpt.com))
+    "adultfriendfinder.com": "https://www.adultfriendfinder.com/forgot-password",  # AdultFriendFinder reset password ([help.adultfriendfinder.com](https://help.adultfriendfinder.com/knowledgebase/forgot-password-or-login/?utm_source=chatgpt.com))
+    "marriott.com": "https://www.marriott.com/forgotPassword.mi",  # Marriott Bonvoy forgot password ([marriott.com](https://www.marriott.com/forgotPassword.mi?utm_source=chatgpt.com))
+    "evernote.com": "https://www.evernote.com/ForgotPassword.action",  # Evernote password recovery ([evernote.com](https://www.evernote.com/ForgotPassword.action?utm_source=chatgpt.com))
+    "myheritage.com": "https://www.myheritage.com/login",  # MyHeritage login (Forgot Password link) ([myheritage.com](https://www.myheritage.com/login?utm_source=chatgpt.com))
+    "ticketmaster.com": "https://help.ticketmaster.com/hc/en-us/articles/9611941002641-How-do-I-reset-my-account-password",  # Ticketmaster reset instructions ([help.ticketmaster.com](https://help.ticketmaster.com/hc/en-us/articles/9611941002641-How-do-I-reset-my-account-password?utm_source=chatgpt.com))
+    "underarmour.com": "https://help.underarmour.com/s/article/forgot-my-password",  # Under Armour forgot password ([help.underarmour.eu](https://help.underarmour.eu/s/article/forgot-my-password?language=en_GB&utm_source=chatgpt.com))
+    "twitter.com": "https://twitter.com/account/begin_password_reset",  # Twitter password reset ([arxiv.org](https://arxiv.org/abs/1608.01492?utm_source=chatgpt.com))
+    "instagram.com": "https://www.instagram.com/accounts/password/reset/",  # Instagram password reset ([theguardian.com](https://www.theguardian.com/money/2025/may/21/what-to-do-get-into-facebook-instagram-hacked-security?utm_source=chatgpt.com))
+    "github.com": "https://github.com/password_reset",  # GitHub password reset ([arxiv.org](https://arxiv.org/abs/1608.01492?utm_source=chatgpt.com))
+}
