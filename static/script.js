@@ -12,8 +12,34 @@ const PasswordLeakNotifier = (function () {
         const results = document.getElementById("results");
         results.classList.remove("d-none");
         results.scrollIntoView({ behavior: 'smooth' });
-        results.innerText = `# breach(es) found for ${email}`;
+
+        const Breaches = [
+            { name: "Example 1", date: "2023-03-15", link: "https://example.com" },
+            { name: "Example 2", date: "2022-11-01", link: "https://example.com" }
+        ];
+
+        let html = `
+    <div class="mb-3" style="font-size: 2.5rem;">
+      <strong>${Breaches.length}</strong> breach(es) found for <strong>${email}</strong>:
+    </div>
+    <ul class="list-group mb-3 text-start">
+  `;
+
+        for (const breach of Breaches) {
+            html += `
+      <li class="list-group-item">
+        <strong>${breach.name}</strong><br>
+        Breach Date: ${breach.date}<br>
+        <a href="${breach.link}" target="_blank">${breach.link}</a>
+      </li>
+    `;
+        }
+
+        html += `</ul>`;
+        results.innerHTML = html;
     }
+
+
 
     // Shows successful reminder popup by removing d-none class from reminders div
     function showReminders(email) {
