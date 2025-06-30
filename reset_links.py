@@ -1,22 +1,82 @@
 RESET_LINKS = {
-    "yahoo.com": "https://login.yahoo.com/forgot",  # Yahoo password recovery ([login.yahoo.com](https://login.yahoo.com/forgot?utm_source=chatgpt.com))
-    "myspace.com": "https://myspace.com/forgotpassword",  # Myspace password reset ([myspace.com](https://myspace.com/forgotpassword?utm_source=chatgpt.com))
-    "linkedin.com": "https://www.linkedin.com/uas/request-password-reset",  # LinkedIn password reset ([linkedin.com](https://www.linkedin.com/uas/request-password-reset?utm_source=chatgpt.com))
-    "adobe.com": "https://helpx.adobe.com/manage-account/using/change-or-reset-password.html",  # Adobe password reset guide ([helpx.adobe.com](https://helpx.adobe.com/manage-account/using/change-or-reset-password.html?utm_source=chatgpt.com))
-    "dropbox.com": "https://www.dropbox.com/forgot",  # Dropbox password reset ([dropbox.com](https://www.dropbox.com/forgot?utm_source=chatgpt.com))
-    "tumblr.com": "https://www.tumblr.com/forgot_password",  # Tumblr password reset ([tumblr.com](https://www.tumblr.com/forgot_password?utm_source=chatgpt.com))
-    "ebay.com": "https://www.ebay.com/help/account/changing-account-settings/reset-password?id=4197",  # eBay reset password citeturn38search0
-    "canva.com": "https://www.canva.com/login/reset/",  # Canva password reset ([canva.com](https://www.canva.com/login/reset/?utm_source=chatgpt.com))
-    "facebook.com": "https://www.facebook.com/login/identify",  # Facebook account recovery ([facebook.com](https://www.facebook.com/login/identify?utm_source=chatgpt.com))
-    "myfitnesspal.com": "https://www.myfitnesspal.com/account/forgot-password",  # MyFitnessPal forgot password ([justanswer.com](https://www.justanswer.com/software/pfjqa-password-recovery-myfitnesspal-account-haven-t-used.html?utm_source=chatgpt.com))
-    "equifax.com": "https://lockandalert.equifax.com/member-center/forgotpassword/",  # Equifax Lock & Alert forgot password ([lockandalert.equifax.com](https://lockandalert.equifax.com/member-center/forgotpassword/?utm_source=chatgpt.com))
-    "adultfriendfinder.com": "https://www.adultfriendfinder.com/forgot-password",  # AdultFriendFinder reset password ([help.adultfriendfinder.com](https://help.adultfriendfinder.com/knowledgebase/forgot-password-or-login/?utm_source=chatgpt.com))
-    "marriott.com": "https://www.marriott.com/forgotPassword.mi",  # Marriott Bonvoy forgot password ([marriott.com](https://www.marriott.com/forgotPassword.mi?utm_source=chatgpt.com))
-    "evernote.com": "https://www.evernote.com/ForgotPassword.action",  # Evernote password recovery ([evernote.com](https://www.evernote.com/ForgotPassword.action?utm_source=chatgpt.com))
-    "myheritage.com": "https://www.myheritage.com/login",  # MyHeritage login (Forgot Password link) ([myheritage.com](https://www.myheritage.com/login?utm_source=chatgpt.com))
-    "ticketmaster.com": "https://help.ticketmaster.com/hc/en-us/articles/9611941002641-How-do-I-reset-my-account-password",  # Ticketmaster reset instructions ([help.ticketmaster.com](https://help.ticketmaster.com/hc/en-us/articles/9611941002641-How-do-I-reset-my-account-password?utm_source=chatgpt.com))
-    "underarmour.com": "https://help.underarmour.com/s/article/forgot-my-password",  # Under Armour forgot password ([help.underarmour.eu](https://help.underarmour.eu/s/article/forgot-my-password?language=en_GB&utm_source=chatgpt.com))
-    "twitter.com": "https://twitter.com/account/begin_password_reset",  # Twitter password reset ([arxiv.org](https://arxiv.org/abs/1608.01492?utm_source=chatgpt.com))
-    "instagram.com": "https://www.instagram.com/accounts/password/reset/",  # Instagram password reset ([theguardian.com](https://www.theguardian.com/money/2025/may/21/what-to-do-get-into-facebook-instagram-hacked-security?utm_source=chatgpt.com))
-    "github.com": "https://github.com/password_reset",  # GitHub password reset ([arxiv.org](https://arxiv.org/abs/1608.01492?utm_source=chatgpt.com))
+    "yahoo.com": "https://login.yahoo.com/forgot",
+    "myspace.com": "https://myspace.com/forgotpassword",
+    "linkedin.com": "https://www.linkedin.com/uas/request-password-reset",
+    "adobe.com": "https://helpx.adobe.com/manage-account/using/change-or-reset-password.html",
+    "dropbox.com": "https://www.dropbox.com/forgot",
+    "tumblr.com": "https://www.tumblr.com/forgot_password",
+    "ebay.com": "https://www.ebay.com/help/account/changing-account-settings/reset-password?id=4197",
+    "canva.com": "https://www.canva.com/login/reset/",
+    "facebook.com": "https://www.facebook.com/login/identify",
+    "myfitnesspal.com": "https://www.myfitnesspal.com/account/forgot-password",
+    "equifax.com": "https://lockandalert.equifax.com/member-center/forgotpassword/",
+    "adultfriendfinder.com": "https://www.adultfriendfinder.com/forgot-password",
+    "marriott.com": "https://www.marriott.com/forgotPassword.mi",
+    "evernote.com": "https://www.evernote.com/ForgotPassword.action",
+    "myheritage.com": "https://www.myheritage.com/login",
+    "ticketmaster.com": "https://help.ticketmaster.com/hc/en-us/articles/9611941002641-How-do-I-reset-my-account-password",
+    "underarmour.com": "https://help.underarmour.com/s/article/forgot-my-password",
+    "twitter.com": "https://twitter.com/account/begin_password_reset",
+    "instagram.com": "https://www.instagram.com/accounts/password/reset/",
+    "github.com": "https://github.com/password_reset"
+    "netflix.com": "https://www.netflix.com/loginhelp",
+    "spotify.com": "https://www.spotify.com/password-reset/",
+    "pinterest.com": "https://www.pinterest.com/password/reset/",
+    "reddit.com": "https://www.reddit.com/password/reset",
+    "uber.com": "https://auth.uber.com/password-reset",
+    "snapchat.com": "https://accounts.snapchat.com/accounts/password_reset_request",
+    "twitch.tv": "https://www.twitch.tv/forgot-password",
+    "steampowered.com": "https://help.steampowered.com/en/wizard/HelpWithLoginInfo",
+    "discord.com": "https://discord.com/forgot-password",
+    "zoom.us": "https://zoom.us/forgot_password",
+    "slack.com": "https://slack.com/forgot-password",
+    "paypal.com": "https://www.paypal.com/signin/forgot",
+    "google.com": "https://accounts.google.com/signin/recovery",
+    "microsoft.com": "https://account.live.com/password/reset",
+    "apple.com": "https://iforgot.apple.com",
+    "target.com": "https://www.target.com/forgot-password",
+    "walmart.com": "https://www.walmart.com/account/forgot-password",
+    "ikea.com": "https://secure.ikea.com/passwordReset",
+    "t-mobile.com": "https://www.t-mobile.com/password-reset",
+    "fiverr.com": "https://www.fiverr.com/password_recovery/new"
+    "amazon.com": "https://www.amazon.com/ap/forgotpassword",
+    "aol.com": "https://login.aol.com/forgot",
+    "ask.com": "https://www.ask.com/password",
+    "soundcloud.com": "https://soundcloud.com/forgot-password",
+    "box.com": "https://account.box.com/reset-password",
+    "wordpress.com": "https://wordpress.com/log-in/forgot-password",
+    "medium.com": "https://medium.com/forgot-password",
+    "quora.com": "https://www.quora.com/forgot_password",
+    "stackoverflow.com": "https://stackoverflow.com/users/account-recovery",
+    "disqus.com": "https://disqus.com/profile/password_reset/",
+    "etsy.com": "https://www.etsy.com/password/reset",
+    "shopify.com": "https://accounts.shopify.com/store-login/forgot-password",
+    "wix.com": "https://www.wix.com/forgot-password",
+    "weebly.com": "https://www.weebly.com/forgot-password",
+    "squarespace.com": "https://account.squarespace.com/password-reset",
+    "mailchimp.com": "https://login.mailchimp.com/reset-password",
+    "salesforce.com": "https://login.salesforce.com/forgotpassword.jsp",
+    "zendesk.com": "https://www.zendesk.com/login/forgot_password/",
+    "atlassian.net": "https://id.atlassian.com/login/forgotpassword",
+    "trello.com": "https://trello.com/forgot",
+    "gitlab.com": "https://gitlab.com/users/password/new",
+    "bitbucket.org": "https://bitbucket.org/account/password/reset/",
+    "aws.amazon.com": "https://signin.aws.amazon.com/forgotpassword",
+    "nike.com": "https://www.nike.com/password/reset",
+    "adidas.com": "https://www.adidas.com/us/forgotpassword",
+    "origin.com": "https://account.ea.com/password/reset",
+    "blizzard.com": "https://us.battle.net/change/reset-password.html",
+    "riotgames.com": "https://account.riotgames.com/forgot-password",
+    "epicgames.com": "https://www.epicgames.com/id/password-reset",
+    "xbox.com": "https://account.live.com/password/reset?ru=https%3a%2f%2fwww.xbox.com",
+    "playstation.com": "https://id.sonyentertainmentnetwork.com/signin/forgotPassword.action",
+    "deezer.com": "https://www.deezer.com/en/forgot-password",
+    "pandora.com": "https://www.pandora.com/password-reset",
+    "hulu.com": "https://auth.hulu.com/web/forgot-password",
+    "disneyplus.com": "https://www.disneyplus.com/login/forgot-password",
+    "hbomax.com": "https://www.hbomax.com/forgot-password",
+    "cbs.com": "https://account.cbs.com/password/reset",
+    "nbc.com": "https://www.nbc.com/forgot-password",
+    "imdb.com": "https://www.imdb.com/registration/password/reset",
+    "indeed.com": "https://secure.indeed.com/account/login?from=/forgotpassword"
 }

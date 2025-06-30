@@ -35,9 +35,9 @@ def check_email():
 
         breaches = resp.json()
         result = {
-            "email": email,
-            "breach_count": len(breaches),
-            "breaches": []
+            "Email": email,
+            "Breach Count": len(breaches),
+            "Breaches": []
         }
 
         for b in breaches:
@@ -45,16 +45,16 @@ def check_email():
             reset_url = RESET_LINKS.get(domain)
 
             entry = {
-                "name": b["Name"],
-                "date": b["BreachDate"]
+                "Name": b["Name"],
+                "Date": b["BreachDate"]
             }
 
             if reset_url:
-                entry["reset_link"] = reset_url
+                entry["Reset Link"] = reset_url
             else:
-                entry["error"] = "Reset link can't be found for this site"
+                entry["Error"] = "Reset link can't be found for this site"
 
-            result["breaches"].append(entry)
+            result["Breaches"].append(entry)
 
         return jsonify(result)
 
