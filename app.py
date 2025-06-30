@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import requests
 import os
 from dotenv import load_dotenv
-from reset_links import RESET_LINKS  
+from reset_links import RESET_LINKS
 
 load_dotenv()
 app = Flask(__name__)
@@ -46,14 +46,13 @@ def check_email():
 
             entry = {
                 "name": b["Name"],
-                "date": b["BreachDate"],
-                "hibp_link": f"https://haveibeenpwned.com/PwnedWebsites#{b['Name']}"
+                "date": b["BreachDate"]
             }
 
             if reset_url:
                 entry["reset_link"] = reset_url
             else:
-                entry["error"] = f"No reset link found for {domain or b['Name']}"
+                entry["error"] = "Reset link can't be found for this site"
 
             result["breaches"].append(entry)
 
@@ -64,3 +63,4 @@ def check_email():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
