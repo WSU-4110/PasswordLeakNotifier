@@ -18,7 +18,7 @@ RESET_LINKS = {
     "underarmour.com": "https://help.underarmour.com/s/article/forgot-my-password",
     "twitter.com": "https://twitter.com/account/begin_password_reset",
     "instagram.com": "https://www.instagram.com/accounts/password/reset/",
-    "github.com": "https://github.com/password_reset"
+    "github.com": "https://github.com/password_reset",
     "netflix.com": "https://www.netflix.com/loginhelp",
     "spotify.com": "https://www.spotify.com/password-reset/",
     "pinterest.com": "https://www.pinterest.com/password/reset/",
