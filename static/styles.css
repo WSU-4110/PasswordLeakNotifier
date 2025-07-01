@@ -2,28 +2,28 @@
 /* Email input div */
 
 .submit-btn {
-    background-color: #c1a48a;
+    background-color: #007ACC;
     color: white;
     border: none;
+    border-radius: 20px;
+    width: 50px;
 }
 
 .submit-btn:hover {
-    background-color: #a58160;
+    background-color: #0066ab;
 }
 
 .form-label{
     color: #007ACC;
     font-size: 5rem;
     line-height: 1.0;
-    margin-top: 12.5rem;
-}
-
-.input-group {
-    margin-top: 3rem;
+    margin-top: 12rem;
 }
 
 #emailInput {
     background-color: #f5f3f3;
+    width: 500px;
+    border-radius: 20px;
 }
 
 /* Results div */
