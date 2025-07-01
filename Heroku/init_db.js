@@ -12,11 +12,11 @@ function init() {
 
     CREATE TABLE IF NOT EXISTS search_results (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
-      user_id INTEGER NOT NULL,
-      query TEXT NOT NULL,
-      result TEXT NOT NULL,
-      searched_at DATETIME DEFAULT CURRENT_TIMESTAMP,
-      FOREIGN KEY (user_id) REFERENCES users(id)
+      user_email TEXT NOT NULL,
+      breach_name TEXT NOT NULL,
+      breach_date TEXT NOT NULL,
+      breach TEXT NOT NULL,
+      FOREIGN KEY (user_email) REFERENCES users(email)
     );
   `);
 
