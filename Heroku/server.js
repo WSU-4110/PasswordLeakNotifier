@@ -31,13 +31,21 @@ app.post('/users', (req, res) => {
 // Add search result
 app.post('/search', (req, res) => {
   const { user_email, breach_name, breach_date, breach } = req.body;
+
   try {
     const stmt = db.prepare(`
       INSERT INTO search_results (user_email, breach_name, breach_date, breach)
-      VALUES (?, ?, ?)
+      VALUES (?, ?, ?, ?)
     `);
-    const info = stmt.run(user_email, query, result);
-    res.status(201).json({ id: info.lastInsertRowid, user_email, breach_name, breach_date, breach });
+    const info = stmt.run(user_email, breach_name, breach_date, breach);
+
+    res.status(201).json({
+      id: info.lastInsertRowid,
+      user_email,
+      breach_name,
+      breach_date,
+      breach
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
