@@ -10,9 +10,9 @@ const PasswordLeakNotifier = (function () {
     // Shows breach results by removing d-none class from the results div
     function showResults(email) {
         const results = document.getElementById("results");
-        results.classList.remove("d-none");
-        results.scrollIntoView({ behavior: 'smooth' });
 
+
+        // Creates a list of the breaches with keys name, date, and link then outputs them into the results div
         const Breaches = [
             { name: "Example 1", date: "2023-03-15", link: "https://example.com" },
             { name: "Example 2", date: "2022-11-01", link: "https://example.com" }
@@ -37,9 +37,10 @@ const PasswordLeakNotifier = (function () {
 
         html += `</ul>`;
         results.innerHTML = html;
+
+        results.classList.remove("d-none");
+        results.scrollIntoView({ behavior: 'smooth', block: 'end' });
     }
-
-
 
     // Shows successful reminder popup by removing d-none class from reminders div
     function showReminders(email) {
