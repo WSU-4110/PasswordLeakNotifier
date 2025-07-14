@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Password Leak Notifier</title>
+
+  <!-- viewport / fonts / icon set -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+  <!-- lightweight animation helpers -->
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- main stylesheet -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+
+<body>
+  <!-- ------------- Decorative Wave (top) ------------- -->
+  <svg class="wave wave-top" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="currentColor" d=""></path>
+  </svg>
+
+  <!-- ------------- Navigation ------------- -->
+  <nav class="nav">
+    <div class="container nav-inner">
+      <span class="brand brand-gradient">
+        <i class="fa-solid fa-shield-halved"></i> Leak&nbsp;Notifier
+      </span>
+
+      <div class="nav-menu">
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <button class="btn nav-btn-outline">Login</button>
+        <button class="btn nav-btn-primary">Get&nbsp;Started</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ------------- Hero ------------- -->
+  <header class="hero container">
+    <div class="hero-text" data-aos="fade-right">
+      <h1>
+        <span class="grad-text">Find&nbsp;out&nbsp;fast</span><br>
+        if your credentials leaked.
+      </h1>
+
+      <p class="lead mb-4">
+        Real-time breach checks backed by <em>Have&nbsp;I&nbsp;Been&nbsp;Pwned</em>.
+      </p>
+
+      <!-- ⚠ removed the “required” attribute to ditch the browser warning icon -->
+      <form id="emailForm" class="hero-form" novalidate>
+        <input id="emailInput" type="email" placeholder="you@example.com">
+        <button type="submit">
+          Scan <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+        </button>
+      </form>
+
+      <div id="loader" class="loader hidden">
+        <i class="fa-solid fa-circle-notch fa-spin"></i> Scanning…
+      </div>
+    </div>
+
+    <lottie-player
+      class="hero-lottie"
+      src="https://assets9.lottiefiles.com/packages/lf20_2lsci5ot.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay
+      data-aos="zoom-in">
+    </lottie-player>
+  </header>
+
+  <!-- ------------- Results (hidden until JS populates) ------------- -->
+  <section id="resultsSection" class="container hidden"></section>
+
+  <!-- ------------- Features ------------- -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Why we’re different</h2>
+
+      <div class="features-grid">
+        <div class="feature-card" data-aos="flip-left">
+          <i class="fa-solid fa-bolt feature-icon"></i>
+          <h3>Instant scans</h3>
+          <p>Checks millions of records in less&nbsp;than&nbsp;1&nbsp;sec.</p>
+        </div>
+
+        <div class="feature-card" data-aos="flip-left" data-aos-delay="100">
+          <i class="fa-solid fa-bell feature-icon"></i>
+          <h3>Auto alerts</h3>
+          <p>Opt-in emails the moment new breaches list your address.</p>
+        </div>
+
+        <div class="feature-card" data-aos="flip-left" data-aos-delay="200">
+          <i class="fa-solid fa-user-shield feature-icon"></i>
+          <h3>Privacy first</h3>
+          <p>Zero emails stored—SHA-1&nbsp;k-Anon protocol keeps you anonymous.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ------------- FAQ ------------- -->
+  <section id="faq" class="faq-section container">
+    <h2 class="section-title" data-aos="fade-up">FAQ</h2>
+
+    <details open>
+      <summary>How does the scan work?</summary>
+      <p>
+        We hash your email, send only the first five characters to the HIBP API,
+        then locally compare suffixes—your full address never leaves your browser.
+      </p>
+    </details>
+
+    <details>
+      <summary>Is this free?</summary>
+      <p>
+        100&nbsp;% free for personal use. Power users can upgrade for bulk scans
+        and SMS alerts.
+      </p>
+    </details>
+
+    <details>
+      <summary>Will you store my email?</summary>
+      <p>
+        Never. All look-ups are done client-side; nothing is written to our servers.
+      </p>
+    </details>
+  </section>
+
+  <!-- ------------- Decorative Wave (bottom) ------------- -->
+  <svg class="wave wave-bottom" viewBox="0 0 1440 320" preserveAspectRatio="none">
+    <path fill="currentColor" d=""></path>
+  </svg>
+
+  <!-- ------------- Footer ------------- -->
+  <footer class="footer">
+    &copy; {{ 2025 }} Leak&nbsp;Notifier • Built with ❤ by PasswordLeakNotifier Team •
+  </footer>
+
+  <!-- libs & local scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init({ duration: 800, once: true });</script>
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
