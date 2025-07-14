@@ -6,6 +6,11 @@
     background-image: linear-gradient(to bottom right, #007ACC, #7ad7ff)
 }
 
+header {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 .submit-btn {
     background-color: #00365a;
     color: white;
@@ -23,7 +28,7 @@
     color: white;
     font-size: 5rem;
     line-height: 1.0;
-    margin-top: 12rem;
+    margin-top: 10rem;
 }
 
 #emailInput {
