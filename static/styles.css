@@ -1,7 +1,13 @@
 /* Email input div */
 
-.submit-btn {
+#grad {
+    height: 600px;
     background-color: #007ACC;
+    background-image: linear-gradient(to bottom right, #007ACC, #7ad7ff)
+}
+
+.submit-btn {
+    background-color: #00365a;
     color: white;
     border: none;
     border-radius: 20px;
@@ -9,11 +15,12 @@
 }
 
 .submit-btn:hover {
-    background-color: #0066ab;
+    background-color: #002741;
+    color: lightslategray;
 }
 
 .form-label {
-    color: #007ACC;
+    color: white;
     font-size: 5rem;
     line-height: 1.0;
     margin-top: 12rem;
@@ -76,7 +83,7 @@
 
 #closePopup {
     margin-top: 1rem;
-    background-color: #c1a48a;
+    background-color: #007ACC;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
