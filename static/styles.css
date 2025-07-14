@@ -37,7 +37,10 @@ header {
     border-radius: 20px;
 }
 
-/* Slideshow */
+/* Graphic */
+.graphic {
+    max-width: 730px;
+}
 
 /*Features div*/
 
@@ -49,7 +52,7 @@ header {
 /* Results div */
 
 #results {
-    margin-top: 12.5rem;
+    margin-top: 5rem;
     color: #007ACC;
     margin-left: 4rem;
     margin-right: 4rem;
