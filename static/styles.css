@@ -1,80 +1,309 @@
+/* ----- colour scheme -------------------------------------------------- */
+:root {
+  /* primary brand tones */
+  --primary:       #00d8ff;
+  --primary-dark:  #00b2d4;
+  --accent:        #ff9565;
 
-/* Email input div */
+  /* dark-mode base */
+  --bg:   #08121b;
+  --text: #ecf3ff;
 
-.submit-btn {
-    background-color: #c1a48a;
-    color: white;
-    border: none;
+  /* glassmorphism helpers */
+  --card: rgba(255, 255, 255, .08);
+  --blur: blur(28px);
 }
 
-.submit-btn:hover {
-    background-color: #a58160;
+/* override when the OS is set to light mode */
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg:   #f5fbff;
+    --text: #17212f;
+    --card: rgba(255, 255, 255, .65);
+  }
 }
 
-.form-label{
-    color: #6e3400;
-    font-size: 5rem;
-    line-height: 1.0;
-    margin-top: 12.5rem;
+/* ----- reset / base --------------------------------------------------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html,
+body { height: 100%; }
+
+body {
+  font-family: Inter, system-ui, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  overflow-x: hidden;
+  min-height: 100vh;
+  padding-top: 4.5rem;   /* space for the sticky nav */
 }
 
-.input-group {
-    margin-top: 3rem;
+/* ----- animated aurora background ------------------------------------ */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(1100px at 10% 90%, rgba(0, 216, 255, .38) 0%, transparent 70%),
+    radial-gradient(1000px at 90%  10%, rgba(255, 149, 101, .32) 0%, transparent 75%),
+    radial-gradient(1300px at 60%  50%, rgba(120, 77, 255, .25) 0%, transparent 80%);
+  filter: blur(90px) saturate(175%);
+  animation: aurora 24s ease-in-out infinite alternate;
 }
 
-#emailInput {
-    background-color: #f5f3f3;
+@keyframes aurora {
+  0%   { transform: translate(-6%, -4%) scale(1);   }
+  50%  { transform: translate( 3%,  2%) scale(1.1); }
+  100% { transform: translate(-3%,  6%) scale(1.03);}
 }
 
-/* Results div */
+/* ----- decorative waves ---------------------------------------------- */
+svg.wave { display: block; width: 100vw; height: 260px; }
 
-#results {
-    margin-top: 12.5rem;
-    color: #6e3400;
-    font-size: 2.5rem;
+.wave {
+  position: absolute;
+  left: 0;
+  color: var(--primary);
 }
 
-/* Reminders div */
+.wave-top    { top:    -80px; transform: rotate(180deg) scaleX(-1); }
+.wave-bottom { bottom: -80px; }
 
-#reminders {
-    margin-top: 31rem;
-    color: #6e3400;
-    font-size: 1.5rem;
-    margin-bottom: 2.5rem;
+/* ----- navigation bar ------------------------------------------------- */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: .8rem 0;
+  background: rgba(0, 0, 0, .55);
+  backdrop-filter: blur(18px) saturate(200%);
+  z-index: 15;
 }
 
-#reminderSubmit {
-    border: none;
-    border-radius: 20%;
-    padding-left: 1rem;
-    padding-right: 1rem;
+.nav-inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-#popup {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
+.brand-gradient {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  background: linear-gradient(90deg, #00d8ff 0%, #784dff 50%, #ff9565 100%);
+  -webkit-background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 14px rgba(0, 216, 255, .5);
 }
 
-#popupContent {
-    background-color: white;
-    padding: 1.25rem 2rem;
-    border-radius: 0.5rem;
-    text-align: center;
+.nav-menu {
+  display: flex;
+  gap: 1.6rem;
+  align-items: center;
 }
 
-#closePopup {
-    margin-top: 1rem;
-    background-color: #c1a48a;
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 0.3rem;
+.nav-link {
+  color: var(--text);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
 }
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 0;
+  background: var(--primary);
+  transition: width .3s;
+}
+
+.nav-link:hover::after { width: 100%; }
+
+/* buttons in the nav */
+.btn {
+  font: inherit;
+  padding: .55rem 1.3rem;
+  border-radius: .75rem;
+  cursor: pointer;
+  transition: transform .2s,
+              background .3s,
+              color .3s,
+              border-color .3s;
+}
+
+.nav-btn-primary {
+  background: var(--primary);
+  color: #001320;
+  border: 2px solid var(--primary);
+}
+
+.nav-btn-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.nav-btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.nav-btn-outline:hover {
+  background: var(--primary);
+  color: #001320;
+  transform: translateY(-2px);
+}
+
+/* ----- hero section --------------------------------------------------- */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
+  align-items: center;
+}
+
+.hero-text h1 {
+  font-size: 2.75rem;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.grad-text {
+  background: linear-gradient(90deg, #00d8ff 0%, #784dff 60%, #ff9565);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.lead {
+  font-size: 1.1rem;
+  max-width: 420px;
+  color: rgba(236, 243, 255, .85);
+}
+
+.hero-form {
+  display: flex;
+  max-width: 450px;
+  margin-top: 1.75rem;
+}
+
+.hero-form input {
+  flex: 1;
+  padding: .9rem 1rem;
+  border: none;
+  border-radius: 1rem 0 0 1rem;
+  background: rgba(255, 255, 255, .06);
+  backdrop-filter: var(--blur);
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.hero-form input::placeholder { color: #8aa2ba; }
+
+.hero-form button {
+  border: none;
+  padding: 0 1.4rem;
+  border-radius: 0 1rem 1rem 0;
+  background: var(--primary);
+  color: #001320;
+  font-weight: 600;
+}
+
+.hero-form button:hover { background: var(--primary-dark); }
+
+.hero-lottie { width: 330px; max-width: 100%; }
+.loader      { margin-top: 1rem; font-weight: 600; }
+
+/* ----- results grid --------------------------------------------------- */
+#resultsSection {
+  margin: 3rem auto 2rem;
+  width: 90%;
+  max-width: 1000px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.6rem;
+}
+
+.result-card {
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  padding: 1.3rem;
+  border-left: 6px solid var(--primary);
+  border-radius: 1rem;
+  transition: transform .2s;
+}
+
+.result-card:hover { transform: translateY(-4px); }
+
+/* ----- features grid -------------------------------------------------- */
+.features-section {
+  padding: 6rem 0;
+  background: linear-gradient(180deg,
+              rgba(0, 0, 0, 0) 0%,
+              rgba(0, 216, 255, .09) 100%);
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 3.2rem;
+}
+
+.features-grid {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.9rem;
+}
+
+.feature-card {
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  padding: 2.1rem;
+  border-radius: 1.15rem;
+  text-align: center;
+}
+
+.feature-icon {
+  font-size: 2.1rem;
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+/* ----- FAQ ------------------------------------------------------------ */
+.faq-section { padding: 5rem 0; max-width: 800px; }
+
+details {
+  background: var(--card);
+  backdrop-filter: var(--blur);
+  margin-bottom: 1.1rem;
+  padding: 1.1rem 1.3rem;
+  border-radius: 1rem;
+}
+
+details summary       { cursor: pointer; font-weight: 600; }
+details[open] summary { color: var(--primary); }
+
+/* ----- footer --------------------------------------------------------- */
+.footer {
+  text-align: center;
+  padding: 2.8rem 1rem;
+  font-size: .9rem;
+  opacity: .8;
+}
+
+/* ----- misc helpers --------------------------------------------------- */
+.container { width: 90%; max-width: 1200px; margin: auto; position: relative; z-index: 2; }
+.hidden    { display: none; }
