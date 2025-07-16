@@ -1,125 +1,147 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
     <title>Password Leak Notifier</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <!-- viewport / fonts / icon set -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+    <!-- lightweight animation helpers -->
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <!-- main stylesheet -->
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 
-<body class="bg-white">
-    <div id="grad">
-        <header class="py-3 px-4 d-flex align-items-center gap-3">
-            <i class="bi bi-lock-fill" style="font-size: 2rem;"></i>
-            <h1 class="h3 m-0" style="font-weight: 600;">Password Leak Notifier</h1>
-        </header>
-        <div class="container mt-5">
-            <div class="row align-items-center">
+<body>
+    <!-- ------------- Decorative Wave (top) ------------- -->
+    <svg class="wave wave-top" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="currentColor" d=""></path>
+    </svg>
 
-                <!-- Email Form (left-side) -->
-                <div class="col-md-6">
-                    <form id="emailForm">
-                        <label for="emailInput" class="form-label fw-bold"
-                            style="font-family: Arial, Helvetica, sans-serif;">
-                            Search for<br>breaches
-                        </label>
+    <!-- ------------- Navigation ------------- -->
+    <nav class="nav">
+        <div class="container nav-inner">
+            <span class="brand brand-gradient">
+                <i class="fa-solid fa-shield-halved"></i> Leak&nbsp;Notifier
+            </span>
 
-                        <div class="d-flex mb-3" style="max-width: 900px; gap: 8px; margin-top: 2rem;">
-                            <input type="email" class="form-control" placeholder="Email address" id="emailInput">
-                            <!-- input type="email" automatically checks email validity -->
-                            <button class="btn submit-btn" type="submit">
-                                <i class="bi bi-arrow-right" style="font-size: 1.2rem;"></i>
-                            </button>
-                        </div>
-                    </form>
-                </div>
-
-                <!-- Graphic (right-side) -->
-                <div class="col-md-6">
-                    <div id="graphic">
-                        <img src="{{ url_for('static', filename='images/plngraphic.png') }}" class="graphic">
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-
-    <div id="features" class="container py-5">
-        <div class="row text-center mb-4">
-            <h2 class="fw-bold">Why Use Password Leak Notifier?</h2>
-        </div>
-
-        <div class="row g-4 text-center">
-            <!-- Feature 1 -->
-            <div class="col-md-4">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <i class="bi bi-search" style="font-size: 2rem;"></i>
-                    <h4 class="mt-3">Real-Time Breach Lookup</h4>
-                    <p>Check instantly if your email address appears in any known data breaches.</p>
-                </div>
-            </div>
-
-            <!-- Feature 2 -->
-            <div class="col-md-4">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <i class="bi bi-link-45deg" style="font-size: 2rem;"></i>
-                    <h4 class="mt-3">Quick Reset Links</h4>
-                    <p>Quick solutions such as reset links that send you straight to the corresponding "Reset Password"
-                        page.</p>
-                </div>
-            </div>
-
-            <!-- Feature 3 -->
-            <div class="col-md-4">
-                <div class="p-4 border rounded shadow-sm h-100">
-                    <i class="bi bi-envelope-check-fill" style="font-size: 2rem;"></i>
-                    <h4 class="mt-3">Email Reminders</h4>
-                    <p>Stay secure with optional monthly email reminders to check your breach status.</p>
-                </div>
+            <div class="nav-menu">
+                <a class="nav-link" href="#features">Features</a>
+                <a class="nav-link" href="#faq">FAQ</a>
+                <button class="btn nav-btn-outline">Login</button>
+                <button class="btn nav-btn-primary">Get&nbsp;Started</button>
             </div>
         </div>
-    </div>
+    </nav>
 
+    <!-- ------------- Hero ------------- -->
+    <header class="hero container">
+        <div class="hero-text" data-aos="fade-right">
+            <h1>
+                <span class="grad-text">Find&nbsp;out&nbsp;fast</span><br>
+                if your credentials leaked.
+            </h1>
 
-    <!-- d-none divs will remain hidden until needed. script.js will remove the d-none class when a valid email is submitted. -->
-    <div id="results" class="d-none text-center fw-bold">
-    </div>
+            <p class="lead mb-4">
+                Real-time breach checks backed by <em>Have&nbsp;I&nbsp;Been&nbsp;Pwned</em>.
+            </p>
 
-    <div id="reminders" class="d-none text-center">
-        Would you like to receive monthly reminders to check for any data breaches?
-        <button id="reminderSubmit">Yes</button>
-    </div>
+            <!-- ⚠ removed the “required” attribute to ditch the browser warning icon -->
+            <form id="emailForm" class="hero-form" novalidate>
+                <input id="emailInput" type="email" placeholder="you@example.com">
+                <button type="submit">
+                    Scan <i class="fa-solid fa-magnifying-glass-arrow-right"></i>
+                </button>
+            </form>
 
-    <div id="popup" class="d-none">
-        <div id="popupContent">
-            <p></p>
-            <button id="closePopup">OK</button>
+            <div id="loader" class="loader hidden">
+                <i class="fa-solid fa-circle-notch fa-spin"></i> Scanning…
+            </div>
         </div>
-    </div>
 
-    <footer class="text-center gradient-footer py-2">
-        <p class="mb-0">
-            Find out more at
-            <a href="https://github.com/WSU-4110/PasswordLeakNotifier" target="_blank"
-                class="text-white text-decoration-none d-inline-flex align-items-center gap-2">
-                <i class="bi bi-github" style="font-size: 1.5rem; vertical-align: middle;"></i>
-                <span>github.com/WSU-4110/PasswordLeakNotifier</span>
-            </a>
-        </p>
+        <lottie-player class="hero-lottie" src="https://assets9.lottiefiles.com/packages/lf20_2lsci5ot.json"
+            background="transparent" speed="1" loop autoplay data-aos="zoom-in">
+        </lottie-player>
+    </header>
+
+    <!-- ------------- Results (hidden until JS populates) ------------- -->
+    <section id="resultsSection" class="container hidden"></section>
+
+    <!-- ------------- Features ------------- -->
+    <section id="features" class="features-section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Why we’re different</h2>
+
+            <div class="features-grid">
+                <div class="feature-card" data-aos="flip-left">
+                    <i class="fa-solid fa-bolt feature-icon"></i>
+                    <h3>Instant scans</h3>
+                    <p>Checks millions of records in less&nbsp;than&nbsp;1&nbsp;sec.</p>
+                </div>
+
+                <div class="feature-card" data-aos="flip-left" data-aos-delay="100">
+                    <i class="fa-solid fa-bell feature-icon"></i>
+                    <h3>Auto alerts</h3>
+                    <p>Opt-in emails the moment new breaches list your address.</p>
+                </div>
+
+                <div class="feature-card" data-aos="flip-left" data-aos-delay="200">
+                    <i class="fa-solid fa-user-shield feature-icon"></i>
+                    <h3>Privacy first</h3>
+                    <p>Zero emails stored—SHA-1&nbsp;k-Anon protocol keeps you anonymous.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ------------- FAQ ------------- -->
+    <section id="faq" class="faq-section container">
+        <h2 class="section-title" data-aos="fade-up">FAQ</h2>
+
+        <details open>
+            <summary>How does the scan work?</summary>
+            <p>
+                We hash your email, send only the first five characters to the HIBP API,
+                then locally compare suffixes—your full address never leaves your browser.
+            </p>
+        </details>
+
+        <details>
+            <summary>Is this free?</summary>
+            <p>
+                100&nbsp;% free for personal use. Power users can upgrade for bulk scans
+                and SMS alerts.
+            </p>
+        </details>
+
+        <details>
+            <summary>Will you store my email?</summary>
+            <p>
+                Never. All look-ups are done client-side; nothing is written to our servers.
+            </p>
+        </details>
+    </section>
+
+    <!-- ------------- Decorative Wave (bottom) ------------- -->
+    <svg class="wave wave-bottom" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="currentColor" d=""></path>
+    </svg>
+
+    <!-- ------------- Footer ------------- -->
+    <footer class="footer">
+        &copy; {{ 2025 }} Leak&nbsp;Notifier • Built with ❤ by PasswordLeakNotifier Team •
     </footer>
 
+    <!-- libs & local scripts -->
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>AOS.init({ duration: 800, once: true });</script>
     <script src="{{ url_for('static', filename='script.js') }}"></script>
-
-    <script src="{{ url_for('static', filename='api.js') }}"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-
 </body>
 
 </html>
