@@ -63,9 +63,10 @@
             </div>
         </div>
 
-        <lottie-player class="hero-lottie" src="https://assets9.lottiefiles.com/packages/lf20_2lsci5ot.json"
-            background="transparent" speed="1" loop autoplay data-aos="zoom-in">
-        </lottie-player>
+        <div class="hero-image" data-aos="zoom-in">
+            <img src="{{ url_for('static', filename='images/plngraphic.png') }}" alt="Security Illustration">
+        </div>
+
     </header>
 
     <!-- ------------- Results (hidden until JS populates) ------------- -->
@@ -92,7 +93,8 @@
                 <div class="feature-card" data-aos="flip-left" data-aos-delay="200">
                     <i class="fa-solid fa-user-shield feature-icon"></i>
                     <h3>Quick Reset Links</h3>
-                    <p>Quick solutions such as reset links that send you straight to the corresponding "Reset Password" page.</p>
+                    <p>Quick solutions such as reset links that send you straight to the corresponding "Reset Password"
+                        page.</p>
                 </div>
             </div>
         </div>

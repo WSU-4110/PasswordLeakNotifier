@@ -205,6 +205,10 @@ svg.wave {
     font-weight: 800;
 }
 
+.hero-image img {
+  max-width: 700px;
+}
+
 .grad-text {
     background: linear-gradient(90deg, #00d8ff 0%, #784dff 60%, #ff9565);
     -webkit-background-clip: text;
