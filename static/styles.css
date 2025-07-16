@@ -127,69 +127,6 @@ svg.wave {
     text-shadow: 0 0 14px rgba(0, 216, 255, .5);
 }
 
-.nav-menu {
-    display: flex;
-    gap: 1.6rem;
-    align-items: center;
-}
-
-.nav-link {
-    color: var(--text);
-    font-weight: 500;
-    text-decoration: none;
-    position: relative;
-}
-
-.nav-link::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -4px;
-    height: 2px;
-    width: 0;
-    background: var(--primary);
-    transition: width .3s;
-}
-
-.nav-link:hover::after {
-    width: 100%;
-}
-
-/* buttons in the nav */
-.btn {
-    font: inherit;
-    padding: .55rem 1.3rem;
-    border-radius: .75rem;
-    cursor: pointer;
-    transition: transform .2s,
-        background .3s,
-        color .3s,
-        border-color .3s;
-}
-
-.nav-btn-primary {
-    background: var(--primary);
-    color: #001320;
-    border: 2px solid var(--primary);
-}
-
-.nav-btn-primary:hover {
-    background: var(--primary-dark);
-    transform: translateY(-2px);
-}
-
-.nav-btn-outline {
-    background: transparent;
-    color: var(--primary);
-    border: 2px solid var(--primary);
-}
-
-.nav-btn-outline:hover {
-    background: var(--primary);
-    color: #001320;
-    transform: translateY(-2px);
-}
-
 /* ----- hero section --------------------------------------------------- */
 .hero {
     min-height: 100vh;
