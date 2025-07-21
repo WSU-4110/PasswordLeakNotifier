@@ -332,3 +332,12 @@ svg.wave {
     flex: 0 0 480px;    
     max-width: 100%;
 }
+#resultsSection strong {
+    line-height: 1.15;
+    font-size: clamp(1.75rem, 3vw + 1rem, 3rem);
+}
+
+#resultsSection .result-card {
+    border-left: 4px solid var(--primary);   /* accents the blue line */
+    border-radius: 1.25rem;
+}
