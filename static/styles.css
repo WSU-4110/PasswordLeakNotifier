@@ -308,3 +308,8 @@ svg.wave {
 .hidden {
     display: none;
 }
+#resultsSection strong {
+   
+    overflow-wrap: anywhere;   
+    word-break: break-all;     
+}
