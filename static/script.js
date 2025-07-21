@@ -26,6 +26,43 @@ const clearResults = () => {
   resultsSection.classList.add("hidden");
 };
 
+export function generateTableHTML(email, breaches) {
+  return `
+    <div style="display: block; width: 100%;">
+      <div class="mb-4 text-center" style="font-size: 2.5rem;">
+        <strong>${breaches.length}</strong> breach(es) found for <strong>${email}</strong>:<br>
+      </div>
+
+      <div class="result-card p-0">
+        <div class="table-responsive">
+          <table class="table table-hover align-middle transparent-table mb-0">
+            <thead>
+              <tr>
+                <th scope="col">Website</th>
+                <th scope="col">Breach Date</th>
+                <th scope="col">Reset Link</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${breaches.map(b => `
+                <tr>
+                  <td><strong>${b.name}</strong></td>
+                  <td>${b.date}</td>
+                  <td>
+                    <a href="${b.link}" target="_blank" class="btn btn-outline-primary btn-sm">
+                      Reset Password
+                    </a>
+                  </td>
+                </tr>`).join('')}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+
 /* Form submit */
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -40,47 +77,8 @@ form.addEventListener("submit", async (e) => {
       { name: "Example 1", date: "2023-03-15", link: "https://example.com" },
       { name: "Example 2", date: "2022-11-01", link: "https://example.com" }
     ];
+    const html = generateTableHTML(email, Breaches);
 
-    let html = `
-        <div style="display: block; width: 100%;">
-      <div class="mb-4 text-center" style="font-size: 2.5rem;">
-        <strong>${Breaches.length}</strong> breach(es) found for <strong>${email}</strong>:<br>
-      </div>
-
-      <div class="result-card p-0">
-        <div class="table-responsive">
-          <table class="table table-hover align-middle transparent-table mb-0">
-            <thead>
-              <tr>
-                <th scope="col">Website</th>
-                <th scope="col">Breach Date</th>
-                <th scope="col">Reset Link</th>
-              </tr>
-            </thead>
-            <tbody>
-    `;
-
-    for (const breach of Breaches) {
-      html += `
-        <tr>
-          <td><strong>${breach.name}</strong></td>
-          <td>${breach.date}</td>
-          <td>
-            <a href="${breach.link}" target="_blank" class="btn btn-outline-primary btn-sm">
-              Reset Password
-            </a>
-          </td>
-        </tr>
-      `;
-    }
-
-    html += `
-            </tbody>
-          </table>
-        </div>
-      </div>
-      </div>
-    `;
 
     resultsSection.innerHTML = html;
     loader.classList.add("hidden");
