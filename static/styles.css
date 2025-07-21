@@ -308,3 +308,26 @@ svg.wave {
 .hidden {
     display: none;
 }
+#resultsSection strong {
+    overflow-wrap: anywhere;        
+    word-break: keep-all;           
+}
+
+#resultsSection strong::after {
+    content: '';
+    
+}
+
+
+#resultsSection strong,
+#resultsSection > div:first-child {  /* the header block */
+    flex: 1 1 300px;    
+}
+
+#resultsSection .result-card {
+    flex: 0 0 480px;    
+    max-width: 100%;
+}
+#resultsSection {
+    display: block !important;     /* turns the grid off */
+}
