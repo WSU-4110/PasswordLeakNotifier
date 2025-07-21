@@ -309,7 +309,26 @@ svg.wave {
     display: none;
 }
 #resultsSection strong {
-   
-    overflow-wrap: anywhere;   
-    word-break: break-all;     
+    overflow-wrap: anywhere;        
+    word-break: keep-all;           
+}
+
+#resultsSection strong::after {
+    content: '';
+    
+}
+#resultsSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;          
+}
+
+#resultsSection strong,
+#resultsSection > div:first-child {  /* the header block */
+    flex: 1 1 300px;    
+}
+
+#resultsSection .result-card {
+    flex: 0 0 480px;    
+    max-width: 100%;
 }
