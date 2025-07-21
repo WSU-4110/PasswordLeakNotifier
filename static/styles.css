@@ -328,3 +328,6 @@ svg.wave {
     flex: 0 0 480px;    
     max-width: 100%;
 }
+#resultsSection {
+    display: block !important;     /* turns the grid off */
+}
