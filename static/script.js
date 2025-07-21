@@ -7,7 +7,7 @@ const loader         = document.getElementById("loader");
 /* ---------- Config ---------- */
 /* Local dev → Flask usually runs on port 5000.
    When you deploy, change only this constant. */
-const API_BASE = "http://127.0.0.1:5000";
+const API_BASE = window.location.origin;
 
 /* ---------- Helper to talk to Flask ---------- */
 async function checkEmail(email) {
