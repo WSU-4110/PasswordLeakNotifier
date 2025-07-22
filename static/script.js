@@ -5,13 +5,12 @@ const resultsSection = document.getElementById("resultsSection");
 const loader = document.getElementById("loader");
 
 /* Build result cards */
-const makeCard = (breach) => {
+export const makeCard = (breach) => {
   const div = document.createElement("div");
   div.className = "result-card";
   div.innerHTML = `
       <h4 style="margin-bottom:.25rem">${breach.Name}</h4>
       <small class="text-muted">Breached ${breach.BreachDate}</small>
-      <p style="margin:.75rem 0">${breach.Description.slice(0, 120)}…</p>
       ${breach.PasswordResetLink
       ? `<a href="${breach.PasswordResetLink}" class="btn btn-sm" style="background:var(--primary);color:#fff;border-radius:.5rem;padding:.35rem .75rem" target="_blank">Reset Password</a>`
       : `<span style="font-size:.8rem;opacity:.7">No reset link</span>`
@@ -21,10 +20,6 @@ const makeCard = (breach) => {
 };
 
 /* Helpers */
-const clearResults = () => {
-  resultsSection.innerHTML = "";
-  resultsSection.classList.add("hidden");
-};
 
 export function generateTableHTML(email, breaches) {
   return `
@@ -64,29 +59,51 @@ export function generateTableHTML(email, breaches) {
 
 
 /* Form submit */
-form.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  clearResults();
-  loader.classList.remove("hidden");
 
-  try {
-    const email = emailInput.value.trim();
+export function setupFormHandler() {
+  const form = document.getElementById("emailForm");
+  const emailInput = document.getElementById("emailInput");
+  const resultsSection = document.getElementById("resultsSection");
+  const loader = document.getElementById("loader");
 
-    // Example data 
-    const Breaches = [
-      { name: "Example 1", date: "2023-03-15", link: "https://example.com" },
-      { name: "Example 2", date: "2022-11-01", link: "https://example.com" }
-    ];
-    const html = generateTableHTML(email, Breaches);
+  const clearResults = () => {
+    resultsSection.innerHTML = "";
+    resultsSection.classList.add("hidden");
+  };
+
+  if (form) {
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      clearResults();
+      loader.classList.remove("hidden");
+
+      try {
+        const email = emailInput.value.trim();
+
+        // Example data 
+        const Breaches = [
+          { name: "Example 1", date: "2023-03-15", link: "https://example.com" },
+          { name: "Example 2", date: "2022-11-01", link: "https://example.com" }
+        ];
+        const html = generateTableHTML(email, Breaches);
 
 
-    resultsSection.innerHTML = html;
-    loader.classList.add("hidden");
-    resultsSection.classList.remove("hidden");
-    resultsSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
+        resultsSection.innerHTML = html;
+        loader.classList.add("hidden");
+        resultsSection.classList.remove("hidden");
+        resultsSection.scrollIntoView({ behavior: 'smooth', block: 'end' });
 
-  } catch (err) {
-    loader.classList.add("hidden");
-    alert("Error: " + err.message);
+      } catch (err) {
+        loader.classList.add("hidden");
+        alert("Error: " + err.message);
+      }
+    });
   }
-});
+}
+
+// Unit testing functions
+export function clearResults() {
+  const resultsSection = document.getElementById("resultsSection");
+  resultsSection.innerHTML = "";
+  resultsSection.classList.add("hidden");
+};
