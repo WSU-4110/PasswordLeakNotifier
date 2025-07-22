@@ -4,7 +4,6 @@ Password Leak Notifier is a web application designed with the HaveIBeenPwned API
 
 - 🔍 Real-time lookups with detailed breach information
 - 🛠️ Quick solutions such as reset links that send you straight to the corresponding "Reset Password" page
-- 📧 Optional email reminders to keep you on track of your accounts' security
 
 ## Getting Started
 Check out our [installation guide](https://github.com/WSU-4110/PasswordLeakNotifier/blob/main/INSTALLATION.md) to start using our app.
