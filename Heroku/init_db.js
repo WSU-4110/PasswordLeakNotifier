@@ -1,7 +1,10 @@
+// db/init.js
 const Database = require('better-sqlite3');
 
-function init() {
-  const db = new Database('database.db');
+function init(filename = 'database.db') {
+  const db = new Database(filename);
+
+  db.exec('PRAGMA foreign_keys = ON;');
 
   db.exec(`
     CREATE TABLE IF NOT EXISTS users (
@@ -21,7 +24,7 @@ function init() {
   `);
 
   db.close();
-  console.log('SQLite database initialized.');
+  console.log(`SQLite database initialized: ${filename}`);
 }
 
 module.exports = init;
