@@ -30,14 +30,22 @@ app.post('/users', (req, res) => {
 
 // Add search result
 app.post('/search', (req, res) => {
-  const { user_id, query, result } = req.body;
+  const { user_email, breach_name, breach_date, breach } = req.body;
+
   try {
     const stmt = db.prepare(`
-      INSERT INTO search_results (user_id, query, result)
-      VALUES (?, ?, ?)
+      INSERT INTO search_results (user_email, breach_name, breach_date, breach)
+      VALUES (?, ?, ?, ?)
     `);
-    const info = stmt.run(user_id, query, result);
-    res.status(201).json({ id: info.lastInsertRowid, user_id, query, result });
+    const info = stmt.run(user_email, breach_name, breach_date, breach);
+
+    res.status(201).json({
+      id: info.lastInsertRowid,
+      user_email,
+      breach_name,
+      breach_date,
+      breach
+    });
   } catch (err) {
     res.status(400).json({ error: err.message });
   }
@@ -48,8 +56,8 @@ app.get('/search/:userEmail', (req, res) => {
   const { userEmail } = req.params;
 
   try {
-    const stmt = db.prepare(`SELECT * FROM users WHERE email = ?`);
-    const user = stmt.get(userEmail);
+    const stmt = db.prepare(`SELECT * FROM search_results WHERE user_email = ?`);
+    const user = stmt.all(userEmail);
 
     if (!user) {
       return res.status(404).json({ error: 'User not found' });
