@@ -141,11 +141,14 @@
   <!-- ------------- Footer ------------- -->
   <footer class="footer">
     &copy; {{ 2025 }} Leak&nbsp;Notifier • Built with ❤ by PasswordLeakNotifier Team •
-  </footer>
-
-  <!-- libs & local scripts -->
+  </footer>  <!-- libs & local scripts -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>AOS.init({ duration: 800, once: true });</script>
+  
+  <!-- Observer Pattern Implementation Scripts -->
+  <script src="{{ url_for('static', filename='js/ui-manager.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/ui-observers.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/api-service.js') }}"></script>
   <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
