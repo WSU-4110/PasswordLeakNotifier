@@ -2,20 +2,21 @@
  * API Service that integrates with Observer Pattern
  * Handles all API communication and updates application state
  */
-class ApiService {
-  constructor(appStateSubject) {
+class ApiService {  constructor(appStateSubject, baseUrl = null) {
     this.appState = appStateSubject;
-    this.baseUrl = window.location.origin;
+    this.baseUrl = baseUrl || window.location.origin || 'http://localhost:3000';
   }
 
   /**
    * Check email for breaches
    * @param {string} email - Email address to check
    * @returns {Promise<Object>} API response data
-   */
-  async checkEmail(email) {
+   */  async checkEmail(email) {
+    // Trim whitespace first
+    const trimmedEmail = email.trim();
+    
     // Validate email format
-    if (!this.isValidEmail(email)) {
+    if (!this.isValidEmail(trimmedEmail)) {
       throw new Error('Please enter a valid email address');
     }
 
@@ -23,12 +24,12 @@ class ApiService {
     this.appState.setState({
       isLoading: true,
       error: null,
-      email: email.trim()
+      email: trimmedEmail
     });
 
     try {
       const response = await fetch(
-        `${this.baseUrl}/check-email?email=${encodeURIComponent(email.trim())}`,
+        `${this.baseUrl}/check-email?email=${encodeURIComponent(trimmedEmail)}`,
         {
           method: 'GET',
           headers: {

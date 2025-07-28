@@ -78,17 +78,16 @@ class AppStateSubject extends Subject {
   /**
    * Update the application state
    * @param {Object} newState - New state properties to merge
-   */
-  setState(newState) {
+   */  setState(newState) {
     const previousState = { ...this.state };
-    this.state = { 
-      ...this.state, 
-      ...newState, 
-      lastUpdated: Date.now() 
-    };
+    const newStateWithoutTimestamp = { ...this.state, ...newState };
     
-    // Only notify if state actually changed
-    if (JSON.stringify(previousState) !== JSON.stringify(this.state)) {
+    // Only update and notify if state actually changed (excluding lastUpdated)
+    if (JSON.stringify(previousState) !== JSON.stringify(newStateWithoutTimestamp)) {
+      this.state = { 
+        ...newStateWithoutTimestamp, 
+        lastUpdated: Date.now() 
+      };
       this.notify(this.state);
     }
   }

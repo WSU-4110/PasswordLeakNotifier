@@ -1,0 +1,26 @@
+{
+  "name": "passwordleaknotifier",
+  "version": "1.0.0",
+  "main": "api_requests.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WSU-4110/PasswordLeakNotifier.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WSU-4110/PasswordLeakNotifier/issues"
+  },
+  "homepage": "https://github.com/WSU-4110/PasswordLeakNotifier#readme",
+  "description": "",
+  "devDependencies": {
+    "jest": "^30.0.5",
+    "jest-environment-jsdom": "^30.0.5"
+  }
+}

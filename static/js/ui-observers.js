@@ -86,14 +86,14 @@ class ResultsObserver extends Observer {
       this.resultsContainer.appendChild(card);
     });
   }
-
   createBreachCard(breach) {
     const card = document.createElement('div');
     card.className = 'result-card';
+    const description = breach.Description || 'No description available';
     card.innerHTML = `
       <h4 style="margin-bottom: 0.25rem; color: var(--accent);">${breach.Name}</h4>
       <small class="text-muted">Breached ${breach.BreachDate}</small>
-      <p style="margin: 0.75rem 0;">${breach.Description.slice(0, 120)}…</p>
+      <p style="margin: 0.75rem 0;">${description.slice(0, 120)}…</p>
       ${breach.PasswordResetLink 
         ? `<a href="${breach.PasswordResetLink}" class="btn btn-sm" 
            style="background: var(--primary); color: #fff; border-radius: 0.5rem; 
