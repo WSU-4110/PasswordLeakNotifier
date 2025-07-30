@@ -7,6 +7,8 @@ from reset_links import RESET_LINKS
 load_dotenv()
 app = Flask(__name__)
 HIBP_API_KEY = os.getenv("HIBP_API_KEY")
+HIBP_BASE_URL = os.getenv("HIBP_BASE_URL", "https://haveibeenpwned.com")
+
 
 @app.route('/')
 def index():
@@ -23,8 +25,8 @@ def check_email():
         "User-Agent": "Pwned-Notifier-School-Project"
     }
     resp = requests.get(
-        f"https://haveibeenpwned.com/api/v3/breachedaccount/{email}",
-        headers=headers, params={"truncateResponse": False}
+    	f"{HIBP_BASE_URL}/api/v3/breachedaccount/{email}",
+    	headers=headers, params={"truncateResponse": False}
     )
     if resp.status_code == 404:
         return jsonify({"email": email, "breach_count": 0, "breaches": []})
@@ -50,4 +52,8 @@ def check_email():
     return jsonify(result)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="127.0.0.1",
+            port=int(os.getenv("FLASK_PORT", "5000")),
+            debug=False,
+            use_reloader=False)
+
